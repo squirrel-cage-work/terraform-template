@@ -12,3 +12,18 @@ variable vpc_name {
     description = "Name of the VPC"
     type        = string
 }
+
+variable "vpc_public_subnet_cidrs" {
+    description = "CIDRs for public subnets"
+    type        = list(string)
+}
+
+variable "vpc_private_subnet_cidrs" {
+    description = "CIDRs for private subnets"
+    type        = list(string)
+}
+
+variable "vpc_azs" {
+    description = "Availability zones"
+    type        = list(string)
+}
