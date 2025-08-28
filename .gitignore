@@ -1,0 +1,5 @@
+#.gitignore
+environments/dev/.terraform/
+environments/dev/*.tfstate
+environments/dev/*.tfstate.*
+environments/dev/*.tfvars
