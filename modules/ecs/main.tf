@@ -11,3 +11,15 @@ resource "aws_security_group" "ecs_service_sg" {
     }
 
 }
+
+
+# ecs task definition
+/*
+resource "aws_ecs_task_definition" "this" {
+    family                   = var.family
+    network_mode             = "awsvpc"
+    requires_compatibilities = ["FARGATE"]
+    cpu                      = var.cpu
+
+}
+*/
