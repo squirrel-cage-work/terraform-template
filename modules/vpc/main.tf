@@ -8,6 +8,15 @@ resource "aws_vpc" "this" {
     }
 }
 
+# internet gateway
+resource "aws_internet_gateway" "gw" {
+    vpc_id = aws_vpc.this.id
+
+    tags = {
+        Name = "${var.name}-internet-gateway"
+    }
+}
+
 # public subnets
 resource "aws_subnet" "public" {
     count             = 2
