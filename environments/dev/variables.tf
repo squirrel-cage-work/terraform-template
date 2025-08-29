@@ -32,3 +32,23 @@ variable "ecr_repository_name" {
   description = "Name of the ECR repository"
   type        = string
 }
+
+variable "ecs_service_name" {
+    description = "The ECS service name"
+    type        = string
+}
+
+variable "ecs_ingress_from_port" {
+    description = "ingress from port for the ecs service security group"
+    type        = number
+}
+
+variable "ecs_ingress_to_port" {
+    description = "ingress to port for the ecs service security group"
+    type        = number
+}
+
+variable "ecs_ingress_protocol" {
+    description  = "ingress protocol for the ecs service security group"
+    type         = string
+}

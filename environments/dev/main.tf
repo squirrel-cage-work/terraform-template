@@ -19,3 +19,12 @@ module "ecr" {
 module "iam" {
   source = "../../modules/iam"
 }
+
+module "ecs" {
+  source            = "../../modules/ecs"
+  vpc_id            = module.vpc.vpc_id 
+  service_name      = var.ecs_service_name
+  ingress_from_port = var.ecs_ingress_from_port
+  ingress_to_port   = var.ecs_ingress_to_port
+  ingress_protocol  = var.ecs_ingress_protocol
+}
