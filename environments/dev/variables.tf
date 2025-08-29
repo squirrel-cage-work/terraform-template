@@ -27,3 +27,8 @@ variable "vpc_azs" {
     description = "Availability zones"
     type        = list(string)
 }
+
+variable "ecr_repository_name" {
+    description = "Name of the ECR repository"
+    type        = string
+}

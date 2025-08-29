@@ -10,3 +10,8 @@ module "vpc" {
     private_subnet_cidrs = var.vpc_private_subnet_cidrs
     azs                  = var.vpc_azs
 }
+
+module "ecr" {
+    source          = "../../modules/ecr"
+    repository_name = var.ecr_repository_name
+}
