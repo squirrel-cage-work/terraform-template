@@ -11,6 +11,22 @@ module "vpc" {
   azs                  = var.vpc_azs
 }
 
+module "alb" {
+  source = "../../modules/alb"
+  vpc_id            = module.vpc.vpc_id
+  service_name      = var.alb_service_name
+  ingress_from_port = var.alb_ingress_from_port
+  ingress_to_port   = var.alb_ingress_to_port
+  ingress_protocol  = var.alb_ingress_protocol
+  name              = var.alb_name
+  public_subnet_ids = module.vpc.public_subnet_ids
+  target_port       = var.alb_target_port
+  target_protocol   = var.alb_target_protocol
+  health_check_path = var.alb_health_check_path
+  listener_port     = var.alb_listener_port
+  listener_protocol = var.alb_listener_protocol
+}
+
 module "ecr" {
   source          = "../../modules/ecr"
   repository_name = var.ecr_repository_name

@@ -1,3 +1,4 @@
+# ecs security group
 variable "vpc_id" {
     description = "the vpc id for ecs service security group"
     type        = string
@@ -23,38 +24,38 @@ variable "ingress_protocol" {
     type         = string
 }
 
-# ecs cluster name
-variable "cluster_name" {
-    description = "ecs cluster name"
+# ALB
+variable "name" {
+    description = "name of alb"
     type        = string
 }
 
-# ecs task definition
-/*
-variable "family" {
-    description = "name of task definition family"
-    type        = string
+variable "public_subnet_ids" {
+    description = "list of public subnet IDs"
+    type        = list(string)
 }
 
-variable "cpu" {
-    description = "cpu of task"
+variable "target_port" {
+    description = "target port"
     type        = number
 }
 
-variable "memory" {
-    description = "memory of task"
+variable "target_protocol" {
+    description = "target protocol"
+    type        = string
+}
+
+variable "health_check_path" {
+    description = "health check for target group"
+    type        = string
+}
+
+variable "listener_port" {
+    description = "listener port"
     type        = number
 }
 
-variable "execution_role_arn" {
-    description = "arn of ecs task execution role"
+variable "listener_protocol" {
+    description = "listener protocol"
     type        = string
 }
-
-variable "container_definitions" {
-    description = "container definitions"
-    type        = string
-}
-
-# ecs service definition
-*/

@@ -9,11 +9,7 @@ resource "aws_security_group" "ecs_service_sg" {
         protocol  = var.ingress_protocol
         cidr_blocks = ["162.120.185.18/32"]
     }
-
 }
-
-
-
 
 # ecs cluster
 resource "aws_ecs_cluster" "this" {
@@ -34,5 +30,14 @@ resource "aws_ecs_task_definition" "task_temp" {
 }
 
 resource "aws_ecs_service" "service_temp" {
+    name            = var.service_name
+    cluster         = aws_ecs_cluster.this.id
+    task_definition = aws_ecs_task_definition.task_temp.arn
+    launch_type     = "FARGATE"
+    desired_count   = 1
+
+    network_configuration {
+        subnets = var.ecs_subnet_ids
+    }
 }
 */
