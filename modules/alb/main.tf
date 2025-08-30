@@ -1,3 +1,13 @@
+# my ip for security group
+data "http" "my_ip" {
+    url = "https://api.ipify.org?format=json"
+}
+
+locals {
+    my_ip = "${jsondecode(data.http.my_ip.response_body)["ip"]}/32"
+}
+
+# security group
 resource "aws_security_group" "ecs_service_sg" {
     name        = "${var.service_name}-sg"
     description = "Security Group for ECS Service"
@@ -7,7 +17,7 @@ resource "aws_security_group" "ecs_service_sg" {
         from_port = var.ingress_from_port
         to_port   = var.ingress_to_port
         protocol  = var.ingress_protocol
-        cidr_blocks = ["162.120.185.18/32"]
+        cidr_blocks = [local.my_ip]
     }
 }
 
