@@ -27,4 +27,6 @@ module "ecs" {
   ingress_from_port = var.ecs_ingress_from_port
   ingress_to_port   = var.ecs_ingress_to_port
   ingress_protocol  = var.ecs_ingress_protocol
+  # ecs cluster
+  cluster_name      = var.ecs_cluster_name
 }

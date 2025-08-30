@@ -22,3 +22,9 @@ variable "ingress_protocol" {
     description  = "ingress protocol for the ecs service security group"
     type         = string
 }
+
+# ecs cluster name
+variable "cluster_name" {
+    description = "ecs cluster name"
+    type        = string
+}

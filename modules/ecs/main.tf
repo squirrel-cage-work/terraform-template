@@ -13,13 +13,26 @@ resource "aws_security_group" "ecs_service_sg" {
 }
 
 
+
+
+# ecs cluster
+resource "aws_ecs_cluster" "this" {
+    name = var.cluster_name
+}
+
 # ecs task definition
 /*
-resource "aws_ecs_task_definition" "this" {
+resource "aws_ecs_task_definition" "task_temp" {
     family                   = var.family
     network_mode             = "awsvpc"
     requires_compatibilities = ["FARGATE"]
     cpu                      = var.cpu
+    memory                   = var.memory
+    execution_role_arn       = var.execution_role_arn
+    task_role_arn            = var.task_role_arn
+    container_definitions    = var.container_definitions
+}
 
+resource "aws_ecs_service" "service_temp" {
 }
 */
